@@ -1,10 +1,10 @@
 export default [
  
     {
-      "type": "product",
+      "name": "Widget",
+      "type":"html",
       "async":false,
       "priorty":2,
-      
       "text": "waleed",
       "propsData": { "msg": "Name", "title": "hey", "isChart": false , "columnStart":2,
       "rowStart":3, "align":"start","rows":2,
@@ -12,9 +12,11 @@ export default [
         }
     },
     {
-      "type": "Product",
+      "name": "Widget",
+      "type":"chart",
       "async": true,
       "priorty":1,
+      "text":"",
       "propsData": {
         "width": 250,
         "height": 250,
@@ -81,9 +83,9 @@ export default [
         }
     },
     {
-      "type": "product",
+      "name": "Widget",
       "text": "Send",
-      "widgettype":"html",
+      "type":"html",
       "isChart":"false",
       "priorty":3,
       "propsData": { "msg": "Send", "title": "", "isChart": false , "columnStart":1,
@@ -92,14 +94,16 @@ export default [
     },
     
     {
-      "type": "product",
+      "name": "Widget",
+      "type":"html",
       "priorty":3,
       "propsData": { "msg": "Nothing else matters", "title": "left", "isChart": false, "columnStart":1,
       "rowStart":3,"align":"end"
         }
     },
     {
-      "type": "product",
+      "name": "Widget",
+      "type":"chart",
       "priorty":1,
       "propsData": {
          "rows": 1,
@@ -167,7 +171,8 @@ export default [
         }
     },
     {
-      "type": "product",
+      "name": "Widget",
+      "type":"chart",
       "priorty":2,
       "propsData": {
         "width": 250,

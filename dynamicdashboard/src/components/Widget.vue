@@ -17,7 +17,7 @@
 <script>
 import Chart from "chart.js";
 export default {
-  name: "Product",
+  name: "Widget",
   props: {
     msg: {
       type: String,
@@ -67,10 +67,9 @@ export default {
       // console.log(`we have ${type} and ${data}`);
 
       if (rules) {
-        // console.log(this.$refs["myChart"]);
-        // var ctx = document.getElementById('myChart').getContext('2d');
+       
         const ctx = this.$refs["myChart"];
-        // console.log({ ctx });
+        
         let myChart = await new Chart(ctx, rules);
 
         console.log(myChart);
@@ -104,6 +103,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div {
+  margin-top:10px ;
   background-color: white;
   padding: 20px;
   border: 1px solid black;

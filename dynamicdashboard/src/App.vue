@@ -1,22 +1,49 @@
 <template>
-  <component
-    :is="option.type"
-    v-for="option in options"
-    v-bind="option.propsData"
-    :key="option.type"
-  ></component>
+<Header/>
+  <div>
+    <button id="add" @click="showForm()"><strong>+</strong></button>
+  </div>
+    <builder  @added="handleSubmit(output)" @closeForm="closeForm" v-if="formClicked"></builder >
+  <section id="widgetContainer">
+    <component
+      :is="option.name"
+      v-for="option in options"
+      v-bind="option.propsData"
+      :key="option.type"
+    ></component>
+  </section>
 </template>
 
+
 <script>
-import Product from "./components/HelloWorld.vue";
-// import { defineAsyncComponent } from 'vue'
+import Widget from "./components/Widget.vue";
+import Builder from "./components/builder";
+import Header from "./components/Header";
 import data from "./data/config";
 export default {
   name: "App",
   components: {
-    Product: Product,
+    Widget: Widget,
+    Builder: Builder,
+    Header: Header
   },
-  methods: {},
+  methods: {
+    showForm() {
+      console.log("sup from showForm");
+      this.formClicked = true;
+      
+    }, handleSubmit(output){
+     
+      console.log('output in app',output);
+      this.formClicked = false
+      
+    },
+    closeForm(){
+      
+      this.formClicked = false
+      
+    }
+  },
   mounted() {
     console.log("mounting app");
   },
@@ -25,14 +52,19 @@ export default {
       options: data.sort((a, b) => {
         return a.priorty - b.priorty;
       }),
+      formClicked: false,
+      
     };
   },
 };
 </script>
 
 <style >
-html{
-background-color: rgba(68, 85, 90, 0.8);
+ * { margin: 0; padding : 0; }
+
+html {
+  
+  background-color: white;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -40,14 +72,25 @@ background-color: rgba(68, 85, 90, 0.8);
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-  
+
+
   /*   
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   align-content: stretch; */
+}
+#add {
+  margin:10px;
+  float: right;
+  width: 50px;
+  height: 40px;
+  font-size: 2rem;
+  vertical-align: middle;
+  text-align: center;
+}
+#widgetContainer {
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr 1fr 1fr;
