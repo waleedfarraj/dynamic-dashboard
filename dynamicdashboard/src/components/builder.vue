@@ -12,10 +12,11 @@
           {{ option.name }}
         </option>
       </select>
-      <input type="text" value="product" id="name" hidden />
-      <fieldset v-for="key in keys" :key="key">
-        <legend :key="key">{{ key }}</legend>
-        <br />
+      <input type="text" value="Widget" id="name" hidden />
+      <div class="fieldSetContainer">
+        <fieldset v-for="key in keys" :key="key">
+          <div>
+             <legend v-if="getValues(key)=='checkbox'" :key="key">{{ key }}</legend>
         <input
           :key="key"
           :type="getValues(key)"
@@ -24,8 +25,13 @@
           value=""
           :ref="key"
         />
+          </div>
+       
       </fieldset>
-      <button type="submit">Submit</button>
+      </div>
+      
+      <button class="formControl" type="submit">Submit</button>
+      <button class="formControl" @click="closeForm" >Close</button>
     </form>
   </div>
 </template>
@@ -76,6 +82,9 @@ export default {
       console.log(output);
       this.$emit("added", output);
     },
+    closeForm(){
+      this.$emit("closeForm")
+    },
     getFormKeys(object) {
       console.log("getFormKeyscalled");
       let getKeys = (obj, prefix = "") =>
@@ -113,10 +122,14 @@ export default {
 
 <style scoped>
 .form {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: fit-content;
   z-index: 10;
-  position: absolute;
+ 
+}
+button{
+   background-color: gray;
+    color: white;
 }
 form {
   background-color: white;
@@ -124,15 +137,53 @@ form {
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
   -moz-text-size-adjust: none;
-}
+
+    border:1px black solid;
+    width: 100%;
+    margin: 10px auto;
+    
+  }
+  input , legend , select {
+    
+    text-align: center;  
+    height: 25px;
+    margin-bottom: auto auto;
+    border: none;
+    border-bottom: 1px solid  greenyellow ;
+    padding: 5px;
+    font-size: 12pt;
+  }
 
 h2,
 .muted {
   color: #2c3e5099;
 }
-
+fieldset{
+  border: none;
+}
 h2 {
   font-size: 26px;
   font-weight: 600;
+}
+.fieldSetContainer{
+display: flex;
+flex-flow: row wrap;
+justify-content: space-between;
+
+}
+.fieldSetContainer fieldset {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  display: flex;
+  /* justify-content: center;
+  justify-items: center;
+  background-color: teal; */
+ 
+}
+.formControl{
+  margin: 5px;
+  padding: 5px;
+  font-size: 10pt;
+
 }
 </style>

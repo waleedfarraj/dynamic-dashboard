@@ -8,4 +8,6 @@ export default [{
     "rowStart":"number", "align":"text","rows":"number",
     "columns":"number","info":"text","icon":"text"}
       
+  },{
+    "type":"chart"
   }]

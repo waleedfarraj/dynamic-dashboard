@@ -1,8 +1,9 @@
 <template>
-  <header>
+<Header/>
+  <div>
     <button id="add" @click="showForm()"><strong>+</strong></button>
-  </header>
-    <builder  @added="handleSubmit(output)" v-if="formClicked"></builder >
+  </div>
+    <builder  @added="handleSubmit(output)" @closeForm="closeForm" v-if="formClicked"></builder >
   <section id="widgetContainer">
     <component
       :is="option.name"
@@ -15,15 +16,16 @@
 
 
 <script>
-import Product from "./components/Widget.vue";
+import Widget from "./components/Widget.vue";
 import Builder from "./components/builder";
-// import { defineAsyncComponent } from 'vue'
+import Header from "./components/Header";
 import data from "./data/config";
 export default {
   name: "App",
   components: {
-    Product: Product,
+    Widget: Widget,
     Builder: Builder,
+    Header: Header
   },
   methods: {
     showForm() {
@@ -31,8 +33,13 @@ export default {
       this.formClicked = true;
       
     }, handleSubmit(output){
-      console.log('submitted');
+     
       console.log('output in app',output);
+      this.formClicked = false
+      
+    },
+    closeForm(){
+      
       this.formClicked = false
       
     }
@@ -53,8 +60,11 @@ export default {
 </script>
 
 <style >
+ * { margin: 0; padding : 0; }
+
 html {
-  background-color: rgba(68, 85, 90, 0.8);
+  
+  background-color: white;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -62,7 +72,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
 
   /*   
   display: flex;
@@ -72,9 +82,8 @@ html {
   align-content: stretch; */
 }
 #add {
-  position: absolute;
-  right: 10%;
-  top: 2%;
+  margin:10px;
+  float: right;
   width: 50px;
   height: 40px;
   font-size: 2rem;

@@ -1,7 +1,7 @@
 export default [
  
     {
-      "name": "product",
+      "name": "Widget",
       "type":"html",
       "async":false,
       "priorty":2,
@@ -12,7 +12,7 @@ export default [
         }
     },
     {
-      "name": "Product",
+      "name": "Widget",
       "type":"chart",
       "async": true,
       "priorty":1,
@@ -83,7 +83,7 @@ export default [
         }
     },
     {
-      "name": "product",
+      "name": "Widget",
       "text": "Send",
       "type":"html",
       "isChart":"false",
@@ -94,7 +94,7 @@ export default [
     },
     
     {
-      "name": "product",
+      "name": "Widget",
       "type":"html",
       "priorty":3,
       "propsData": { "msg": "Nothing else matters", "title": "left", "isChart": false, "columnStart":1,
@@ -102,7 +102,7 @@ export default [
         }
     },
     {
-      "name": "product",
+      "name": "Widget",
       "type":"chart",
       "priorty":1,
       "propsData": {
@@ -171,7 +171,7 @@ export default [
         }
     },
     {
-      "name": "product",
+      "name": "Widget",
       "type":"chart",
       "priorty":2,
       "propsData": {
